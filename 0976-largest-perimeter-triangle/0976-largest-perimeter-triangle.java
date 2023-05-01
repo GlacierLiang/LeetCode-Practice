@@ -1,13 +1,14 @@
 class Solution {
     public int largestPerimeter(int[] nums) {
         Arrays.sort(nums);
-        int temp;
-        for(int upperbound = nums.length-1; upperbound >=2; --upperbound)
-        {
-            temp = nums[upperbound-1] + nums[upperbound-2];
-            if(temp>nums[upperbound]) 
-                return (nums[upperbound] + temp);
+        int n = nums.length;
+
+        for (int i = n - 1; i > 1; i--) {
+            if (nums[i] < nums[i - 1] + nums[i - 2]) {
+                return nums[i] + nums[i - 1] + nums[i - 2];
+            }
         }
-        return 0; //impossible to form
+
+        return 0;
     }
 }
